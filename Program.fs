@@ -24,7 +24,7 @@ module KingUnko =
 
         member self.Replicate() = List.replicate self.Count self.Element
 
-    let private generate (height: int) (n: int) : Pattern list =
+    let private generateElements (height: int) (n: int) : Pattern list =
         let padding =
             {
                 Element = Space
@@ -62,11 +62,11 @@ module KingUnko =
         | _ -> [ padding; { Element = Unko; Count = (2 * n - 1) }; padding ]
 
     let private generateStep (height: int) (n: int) =
-        generate height n
+        generateElements height n
         |> List.map (fun pattern -> pattern.Replicate())
         |> List.concat
 
-    let generateAll (height: int) =
+    let generate (height: int) =
         for n in [ 1..height ] do
             generateStep height n
             |> List.map (fun step -> step.ToEmoji())
@@ -93,7 +93,7 @@ let run (args:string array) : ExitStatus =
             | _ -> None
 
         match tryParseInt args[0] with
-        | Some(height) -> KingUnko.generateAll height
+        | Some(height) -> KingUnko.generate height
         | None -> eprintfn "invalid number: %s" args[0]
 
         ExitStatus.Ok
