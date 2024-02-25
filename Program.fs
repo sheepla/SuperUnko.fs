@@ -80,11 +80,11 @@ type ExitStatus =
     member self.ToInt() : int =
         match self with
         | Ok -> 0
-        | InvalidArgs(args) -> 
+        | InvalidArgs(args) ->
             eprintfn "invalid arguments: %A" args
             1
 
-let run (args:string array) : ExitStatus =
+let run (args: string array) : ExitStatus =
     match args with
     | args when args.Length = 1 ->
         let tryParseInt (s: string) : int option =
@@ -93,15 +93,14 @@ let run (args:string array) : ExitStatus =
             | _ -> None
 
         match tryParseInt args[0] with
-        | Some(height) -> KingUnko.generate height
-        | None -> eprintfn "invalid number: %s" args[0]
+        | Some(height) ->
+            KingUnko.generate height
+            ExitStatus.Ok
+        | None -> ExitStatus.InvalidArgs <| sprintf "invalid number: %s" args[0]
 
-        ExitStatus.Ok
-    | args ->
-        ExitStatus.InvalidArgs <| String.concat " " args
-    
+    | args -> ExitStatus.InvalidArgs <| String.concat " " args
+
 [<EntryPoint>]
 let main args =
     let exitStatus = run args
     exitStatus.ToInt()
-
