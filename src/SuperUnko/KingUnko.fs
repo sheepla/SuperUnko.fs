@@ -74,5 +74,3 @@ module KingUnko =
             |> List.map (fun step -> step.ToEmoji())
             |> String.concat ""
             |> printfn "%s"
-
-
