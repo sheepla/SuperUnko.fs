@@ -9,6 +9,7 @@ module Program =
         @"Usage: 
     SuperUnko [-h|--help]
     SuperUnko king <HEIGHT>
+    SuperUnko fizzbuzz <COUNT>
 "
 
     type ExitStatus =
@@ -33,8 +34,16 @@ module Program =
             match args[0] with
             | command when command = "king" ->
                 match tryParseInt args[1] with
-                | Some(height) ->
+                | Some height ->
                     KingUnko.generate height
+                    ExitStatus.Ok
+                | None ->
+                    Console.WriteLine(Usage)
+                    ExitStatus.InvalidArgs <| sprintf "invalid number: %s" args[0]
+            | command when command = "fizzbuzz" ->
+                match tryParseInt args[1] with
+                | Some count ->
+                    FizzBuzz.generate count |> Seq.iter (fun pattern -> Console.WriteLine(pattern.ToEmoji()))
                     ExitStatus.Ok
                 | None ->
                     Console.WriteLine(Usage)
