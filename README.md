@@ -17,9 +17,11 @@ dotnet publish
 ## Usage
 
 ```
-Usage
+Usage: 
     SuperUnko [-h|--help]
     SuperUnko king <HEIGHT>
+    SuperUnko fizzbuzz <COUNT>
+    SuperUnko bigunko
 ```
 
 ## Example
