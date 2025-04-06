@@ -72,34 +72,6 @@ module Program =
                 Console.WriteLine(Usage)
                 ExitStatus.InvalidArgs(args, "Unknown command")
 
-    //match args[0] with
-    //| command when command = "king" ->
-    //    match tryParseInt args[1] with
-    //    | Some height ->
-    //        KingUnko.generate height |> Seq.iter (fun step -> Console.WriteLine(step))
-    //        ExitStatus.Ok
-    //    | None ->
-    //        Console.WriteLine(Usage)
-    //        ExitStatus.InvalidArgs <| sprintf "invalid number: %s" args[0]
-    //| command when command = "bigunko" ->
-    //    SuperUnko.BigUnko.printBigUnko ()
-    //    ExitStatus.Ok
-    //| command when command = "fizzbuzz" ->
-    //    match tryParseInt args[1] with
-    //    | Some count ->
-    //        FizzBuzz.generate count
-    //        |> Seq.iter (fun pattern -> Console.WriteLine(pattern.ToEmoji()))
-
-    //        ExitStatus.Ok
-    //    | None ->
-    //        Console.WriteLine(Usage)
-    //        ExitStatus.InvalidArgs <| sprintf "invalid number: %s" args[0]
-    //| command when (Array.contains command [| "-h"; "--help" |]) ->
-    //    Console.WriteLine(Usage)
-    //    ExitStatus.Ok
-    //| command ->
-    //    Console.WriteLine(Usage)
-    //    ExitStatus.InvalidArgs command
 
     [<EntryPoint>]
     let main (argv: string array) : int =
