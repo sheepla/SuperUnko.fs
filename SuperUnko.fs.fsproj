@@ -3,6 +3,11 @@
     <OutputType>Exe</OutputType>
     <OutputName>SuperUnko</OutputName>
     <TargetFramework>net9.0</TargetFramework>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="src/SuperUnko/FizzBuzz.fs" />
