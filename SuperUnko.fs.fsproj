@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="src/SuperUnko/FizzBuzz.fs" />
+    <Compile Include="src/SuperUnko/BigUnko.fs" />
     <Compile Include="src/SuperUnko/KingUnko.fs" />
     <Compile Include="src/SuperUnko/Program.fs" />
   </ItemGroup>

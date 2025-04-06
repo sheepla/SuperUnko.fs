@@ -68,9 +68,11 @@ module KingUnko =
         |> List.map (fun pattern -> pattern.Replicate())
         |> List.concat
 
-    let generate (height: int) =
-        for n in [ 1..height ] do
-            generateStep height n
-            |> List.map (fun step -> step.ToEmoji())
-            |> String.concat ""
-            |> printfn "%s"
+    let generate (height: int) : string seq =
+        seq {
+            for n in [ 1..height ] do
+                yield
+                    (generateStep height n
+                     |> List.map (fun step -> step.ToEmoji())
+                     |> String.concat "")
+        }
